@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="./packages/css/new.css">
 </head>
 <body>
-    <div class="container"></div>
+    <!-- <div id="myModal" class="modal"> -->
+    <!-- <div class="container" class="modal-content"> -->
+   
     <div class="content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+           
+          </div>
         <h1>UPLOAD NEW BLOG</h1>
         <form id="postBlog" method="POST" >
        <input type="text" name="name" id="postTitle" placeholder="blog title" ><br>
@@ -16,10 +22,38 @@
         <br>
        <input type="file" name="image" id="postImage"/><br>
             <div>
-            <button href="" class="btn" type="submit"> UPLOAD </button>
+            <button  class="btn" type="submit" onclick="pop()"> UPLOAD </button>
             </div>
+        <p class="text">Go to <a href="index.html">Homepage</a> </p> 
+
         </form>
-</div>  
+</div> 
+<!-- </div>  -->
 <script src="./packages/js/blog.js"></script>
+<script>
+    var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+ 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+function pop(){
+    window.alert("POST ADDED SUCCESSFULLY")
+}
+</script>
+
 </body>
 </html>

@@ -25,7 +25,6 @@ const postDetails = document.querySelector("#postDetails");
 const postImage = document.querySelector("#postImage");
 
 if(postForm){
-
     postForm.addEventListener("submit", e=> {
         e.preventDefault();
         
@@ -45,3 +44,4 @@ fetch("http://localhost:3000/api/post/post", {
 
 
     }
+   
