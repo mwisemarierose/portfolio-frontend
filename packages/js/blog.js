@@ -55,7 +55,9 @@ fetch(`${globalURL}/api/post/post`, {
             <td><img src="${blog.thumb}"/></td>
             <td>${blog.title}</td>
             <td><a href="#" class="btn">update</a></td>
-            <td><a href="#" class="btn">Delete</a></td>
+            <td><button class="btn" onClick="deleteBlog('${blog._id}')" >Delete</button></td>
+
+            
         </tr>`;
             })
         })
