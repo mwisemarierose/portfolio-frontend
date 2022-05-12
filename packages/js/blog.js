@@ -1,7 +1,10 @@
+
 const port = document.querySelector('.portifolio__container');
 
-fetch("http://localhost:3000/api/post/getAll")
-.then(data=>data.json())
+if(port){
+
+    fetch(`${globalURL}/api/post/getAll`)
+    .then(data=>data.json())
 .then(data=>{
     data.data.map(blog=>{
         port.innerHTML += `<div class="blog__content grid swiper-slide">
@@ -9,7 +12,7 @@ fetch("http://localhost:3000/api/post/getAll")
         port.innerHTML += blog.thumb ? `<img src="${blog.thumb}" class="blog__img" width="50%" height="100%"/>` : '';
      port.innerHTML += `<div class="blog_">
         <p>${blog.desc} </p>
-         <a href="Blog.html?blog_id=${blog._id}"  class="button button--flex button--small portfolio__button"> 
+        <a href="Blog.html?blog_id=${blog._id}"  class="button button--flex button--small portfolio__button"> 
          READ MORE
          </a>
          </div> 
@@ -17,7 +20,8 @@ fetch("http://localhost:3000/api/post/getAll")
          </div>`;
         })
     })
-
+}
+    
     // post blog
 const postForm = document.querySelector("#postBlog");
 const postTitle = document.querySelector("#postTitle");
@@ -32,7 +36,7 @@ let formData = new FormData();
 formData.append("thumb", postImage.files[0]);
 formData.append('title', postTitle.value);
 formData.append('desc', postDetails.value);
-fetch("http://localhost:3000/api/post/post", {
+fetch(`${globalURL}/api/post/post`, {
         method: "post",
         body: formData
       })
@@ -40,8 +44,19 @@ fetch("http://localhost:3000/api/post/post", {
          console.log(response);
         });
 })
-
-
-
     }
+    const port1 = document.querySelector('.blogs-list');
+
+    fetch(`${globalURL}/api/post/getAll`)
+    .then(data=>data.json())
+    .then(data=>{
+        data.data.map(blog=>{
+            port1.innerHTML += ` <tr>
+            <td><img src="${blog.thumb}"/></td>
+            <td>${blog.title}</td>
+            <td><a href="#" class="btn">update</a></td>
+            <td><a href="#" class="btn">Delete</a></td>
+        </tr>`;
+            })
+        })
    
